@@ -3,7 +3,13 @@
         <section>
             <h3>Film</h3>
             <ul>
-                <AppMovie v-for="(movie, index) in store.movies" :key="index" :movie="movie" />
+                <AppMovie v-for="(movie, index) in store.movies" :key="index" :item="movie" />
+            </ul>
+        </section>
+        <section>
+            <h3>Series</h3>
+            <ul>
+                <AppMovie v-for="(show, index) in store.tvshows" :key="index" :item="show" />
             </ul>
         </section>
     </main>

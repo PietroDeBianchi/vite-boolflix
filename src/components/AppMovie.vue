@@ -1,11 +1,11 @@
 <template>
     <li>
-        {{ movie.title }}
-        {{ movie.original_title }}
-        <img :src="getImageUrl(`../assets/flags/${movie.original_language}.png`)"
-            v-if="myFlags.includes(movie.original_language)" class="flag-leng" />
-        <span v-else> {{ movie.original_language }}</span>
-        {{ movie.vote_average }}
+        <h3>{{ getName() }}</h3>
+        <h4>{{ getTitle() }}</h4>
+        <img :src="getImageUrl(`../assets/flags/${item.original_language}.png`)"
+            v-if="myFlags.includes(item.original_language)" class="flag-leng" />
+        <span v-else> {{ item.original_language }}</span>
+        <span>{{ item.vote_average }}</span>
     </li>
 </template>
 
@@ -13,7 +13,7 @@
 export default {
     name: "AppMovie",
     props: {
-        movie: Object
+        item: Object,
     },
     data() {
         return {
@@ -23,7 +23,22 @@ export default {
     methods: {
         getImageUrl(path) {
             return new URL(path, import.meta.url).href
+        },
+        getTitle() {
+            if (this.item.original_title) {
+                return this.item.original_title;
+            } else {
+                return this.item.original_name;
+            }
+        },
+        getName() {
+            if (this.item.title) {
+                return this.item.title;
+            } else {
+                return this.item.name;
+            }
         }
+
     }
 }
 </script>

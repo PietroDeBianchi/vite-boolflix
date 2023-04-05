@@ -14,28 +14,46 @@ export default {
     AppHeader,
     AppMain
   },
+  created() {
+    this.getMovies();
+    this.getTvShows();
+  },
   methods: {
-    getMovies() {
-      axios.get(`https://api.themoviedb.org/3/search/movie`,
-        {
-          params: {
-            api_key: this.store.apiKey,
-            query: this.store.search,
-            language: "it-IT"
-          }
-        }
-      )
+    doResearch() {
+
+      const paramsObj = {
+        params: {
+          api_key: this.store.apiKey,
+          query: this.store.search,
+          language: "it-IT"
+        },
+      };
+
+      this.getMovies(paramsObj);
+      this.getTvShows(paramsObj);
+    },
+
+    getMovies(paramsObj) {
+      axios.get(`https://api.themoviedb.org/3/search/movie`, paramsObj)
         .then(response => {
           console.log(response)
           this.store.movies = response.data.results;
         });
-    }
+    },
+
+    getTvShows(paramsObj) {
+      axios.get(`https://api.themoviedb.org/3/search/tv`, paramsObj)
+        .then(response => {
+          console.log(response)
+          this.store.tvshows = response.data.results;
+        });
+    },
   }
 }
 </script>
 
 <template>
-  <AppHeader @doResearch="getMovies" />
+  <AppHeader @doResearch="doResearch" />
   <AppMain />
 </template>
 
