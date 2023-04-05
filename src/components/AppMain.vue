@@ -26,4 +26,16 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+main {
+    height: 100vh;
+    padding: 0 40px;
+    background-color: #1B1B1B;
+    padding-top: 120px; //100px = header heigth
+
+    h3 {
+        color: white;
+        font-size: 2rem;
+    }
+}
+</style>
