@@ -32,7 +32,7 @@ export default {
 header {
     position: fixed;
     width: 100%;
-    height: 100px;
+    height: 80px;
     padding: 0 40px;
     @include mixins.d-flex-between;
     background-color: black;

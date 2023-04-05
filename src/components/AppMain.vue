@@ -28,13 +28,13 @@ export default {
 
 <style lang="scss" scoped>
 main {
-    height: 100vh;
+    min-height: 100vh;
     padding: 0 40px;
     background-color: #1B1B1B;
-    padding-top: 120px; //100px = header heigth
+    padding-top: 100px; //80px = header heigth
+    color: white;
 
     h3 {
-        color: white;
         font-size: 2rem;
     }
 }
