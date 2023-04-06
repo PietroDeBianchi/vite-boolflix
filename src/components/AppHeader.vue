@@ -30,6 +30,7 @@ export default {
 @use "../styles/partials/mixins";
 
 header {
+    z-index: 999;
     position: fixed;
     width: 100%;
     height: 80px;

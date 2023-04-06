@@ -48,6 +48,7 @@ main {
 
     h3 {
         font-size: 2rem;
+        margin-bottom: 12px;
     }
 }
 
@@ -60,6 +61,7 @@ section {
         @include mixins.d-flex-between;
         gap: 12px;
         overflow-x: scroll;
+        height: 600px;
     }
 }
 </style>
