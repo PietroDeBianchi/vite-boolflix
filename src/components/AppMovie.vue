@@ -1,5 +1,5 @@
 <template>
-    <li class="card-container" @click="flipCard">
+    <li class="card-container" @mouseenter="flipCard" @mouseleave="flipCard">
         <div class="card front-card" :class="{ 'hidden': isFlipped }">
             <img v-if="item.poster_path" class="poster" :src="`https://image.tmdb.org/t/p/w342${item.poster_path}`">
             <img v-else src="https://cdn.onlinewebfonts.com/svg/img_89726.png" alt="sob" class="poster_none">
@@ -100,15 +100,20 @@ li {
     .card {
         width: 342px;
         height: 520px;
+        opacity: 1;
+        transition: opacity 0.3s ease-in-out;
 
     }
 
     .back-card {
         border: 1px solid white;
+        position: absolute;
+        top: 0;
+        left: 0;
     }
 
     .hidden {
-        display: none;
+        opacity: 0;
     }
 }
 
