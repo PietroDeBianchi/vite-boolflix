@@ -1,5 +1,6 @@
 <template>
     <li>
+        <img class="poster" :src="`https://image.tmdb.org/t/p/w342${item.poster_path}`">
         <h3>{{ getName() }}</h3>
         <h4>{{ getTitle() }}</h4>
         <img :src="getImageUrl(`../assets/flags/${item.original_language}.png`)"

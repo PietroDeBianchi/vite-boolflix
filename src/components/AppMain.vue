@@ -1,16 +1,20 @@
 <template>
     <main>
-        <section>
+        <section v-if="store.movies.length > 0">
             <h3>Film</h3>
             <ul>
-                <AppMovie v-for="(movie, index) in store.movies" :key="index" :item="movie" />
+                <AppMovie v-for="movie in store.movies" :key="movie.id" :item="movie" />
             </ul>
         </section>
-        <section>
+        <section v-if="store.tvshows.length > 0">
             <h3>Series</h3>
             <ul>
-                <AppMovie v-for="(show, index) in store.tvshows" :key="index" :item="show" />
+                <AppMovie v-for="show in store.tvshows" :key="show.id" :item="show" />
             </ul>
+        </section>
+
+        <section v-if="store.tvshows.length == 0 && store.movies.length == 0">
+            <h3>No Results...</h3>
         </section>
     </main>
 </template>
@@ -33,6 +37,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@use "../styles/partials/mixins";
+
 main {
     min-height: 100vh;
     padding: 0 40px;
@@ -42,6 +48,18 @@ main {
 
     h3 {
         font-size: 2rem;
+    }
+}
+
+section {
+    min-height: 20vh;
+    margin-top: 20px;
+    padding-bottom: 20px;
+
+    ul {
+        @include mixins.d-flex-between;
+        gap: 12px;
+        overflow-x: scroll;
     }
 }
 </style>
